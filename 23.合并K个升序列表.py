@@ -11,22 +11,20 @@ class Solution:
         while flag:
             mmin = 10000000
             index = -1
+            flag = False
             for i, listnode in enumerate(lists):
                 if listnode:
-                    flag = True
+                    flag |= True
                     if listnode.val < mmin:
                         index = i
                         mmin = listnode.val
                 else:
-                    flag = False
+                    flag |= False
             if flag:
-                res.val = lists[index].val
-                lists[index] = lists[index].next
                 tmp = ListNode()
+                tmp.val = lists[index].val
+                lists[index] = lists[index].next
                 res.next = tmp
                 res = res.next
-            else:
-                del res
-                print(r)
-                print(res)
-        return r
+
+        return r.next
